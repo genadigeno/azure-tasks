@@ -1,12 +1,13 @@
 package old;
 
+import com.microsoft.azure.functions.annotation.*;
 import com.microsoft.azure.functions.*;
 
 public class MainFunction {
 
-//    @FunctionName("helloFunction")
+    @FunctionName("helloFunction")
     public HttpResponseMessage run(
-//            @HttpTrigger(name = "req", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.ANONYMOUS)
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.ANONYMOUS)
             HttpRequestMessage<String> request,
             final ExecutionContext context
     ){
