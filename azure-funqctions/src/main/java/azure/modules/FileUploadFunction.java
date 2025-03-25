@@ -7,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,6 +23,14 @@ public class FileUploadFunction {
         context.getLogger().info("File upload request received");
 
         try {
+            Map<String, String> headers = request.getHeaders();
+            if (headers.isEmpty()) {
+                context.getLogger().info("No http headers received");
+            }
+            else {
+                headers.forEach((key, value) -> context.getLogger().info("\t "+key + ": " + value));
+            }
+
             // Get connection string from environment variables
             String connectionString = System.getenv("AzureWebJobsStorage");
             String containerName = "uploads";
@@ -42,8 +51,17 @@ public class FileUploadFunction {
                     .blobName(blobName)
                     .buildClient();
 
-            context.getLogger().info("uploading...");
-            blobClient.upload(new ByteArrayInputStream(fileContent), fileContent.length);
+            if (!blobClient.exists()) {
+                context.getLogger().info("uploading a new blob...");
+                blobClient.upload(new ByteArrayInputStream(fileContent), fileContent.length);
+            }
+            else {
+                context.getLogger().warning("blob already exists");
+                context.getLogger().info("deleting existing blob...");
+                blobClient.delete();
+                context.getLogger().info("the blob deleted successfully. uploading a new blob...");
+                blobClient.upload(new ByteArrayInputStream(fileContent), fileContent.length);
+            }
 
             return request.createResponseBuilder(HttpStatus.OK)
                     .body("File uploaded successfully. Blob name: " + blobName)

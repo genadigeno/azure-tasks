@@ -15,12 +15,7 @@
         <java.version>17</java.version>
         <azure.functions.maven.plugin.version>1.23.0</azure.functions.maven.plugin.version>
         <azure.functions.version>2.0.1</azure.functions.version>
-<<<<<<< HEAD
-        <functionAppName>helloFunction</functionAppName>
-=======
-<!--        <functionAppName>helloFunction</functionAppName>-->
         <functionAppName>UploadFileToBlob</functionAppName>
->>>>>>> 753de84 (uploading files)
     </properties>
 
     <dependencies>
@@ -49,12 +44,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.15.0</version>
         </dependency>
-<<<<<<< HEAD
-    </dependencies>
-
-    <build>
-=======
-
         <!-- Azure Storage Blob SDK -->
         <dependency>
             <groupId>com.azure</groupId>
@@ -81,7 +70,6 @@
                 <filtering>true</filtering> <!-- Optional: enables variable substitution -->
             </resource>
         </resources>
->>>>>>> 753de84 (uploading files)
         <plugins>
             <!-- Azure Functions Maven Plugin -->
             <plugin>
@@ -90,25 +78,15 @@
                 <version>1.23.0</version> <!-- Updated version -->
                 <configuration>
                     <appName>${functionAppName}</appName>
-<<<<<<< HEAD
-                    <resourceGroup>myResourceGroup</resourceGroup>
-                    <region>westeurope</region>
-=======
                     <resourceGroup>module_06</resourceGroup>
                     <region>westus2</region>
->>>>>>> 753de84 (uploading files)
                     <runtime>
                         <os>linux</os>
                         <javaVersion>17</javaVersion>
                         <image>mcr.microsoft.com/azure-functions/java:4-java17</image>
                     </runtime>
-<<<<<<< HEAD
-                    <authLevel>anonymous</authLevel>
-                    <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
-=======
 <!--                    <authLevel>anonymous</authLevel>-->
 <!--                    <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>-->
->>>>>>> 753de84 (uploading files)
                     <appSettings>
                         <property>
                             <name>FUNCTIONS_EXTENSION_VERSION</name>
@@ -126,8 +104,6 @@
                 </executions>
             </plugin>
 
-<<<<<<< HEAD
-=======
             <!-- Add this NEW plugin configuration -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -156,7 +132,6 @@
                 </executions>
             </plugin>
 
->>>>>>> 753de84 (uploading files)
             <!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

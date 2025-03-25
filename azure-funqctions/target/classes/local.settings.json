@@ -1,17 +1,11 @@
 {
   "IsEncrypted": false,
   "Values": {
-<<<<<<< HEAD
-    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "java",
-    "FUNCTIONS_EXTENSION_VERSION": "~4"
-=======
     "FUNCTIONS_WORKER_RUNTIME": "java",
     "FUNCTIONS_EXTENSION_VERSION": "~4",
     "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=ordersstorage33557;AccountKey=RbrsvbqohzNV2hFwmqBmGO+AqdkwpdEGSgDQDMrBV+wuO+LqEb9SAl+L/nW01uOCmfeaJ5W0TMih+ASta4TBRg==;EndpointSuffix=core.windows.net",
     "AzureWebJobsSecretStorageType": "files",
 //    "AzureWebJobsDashboard": "files",
     "AzureWebJobsDisableHomepage": "true"
->>>>>>> 753de84 (uploading files)
   }
 }
