@@ -15,7 +15,12 @@
         <java.version>17</java.version>
         <azure.functions.maven.plugin.version>1.23.0</azure.functions.maven.plugin.version>
         <azure.functions.version>2.0.1</azure.functions.version>
+<<<<<<< HEAD
         <functionAppName>helloFunction</functionAppName>
+=======
+<!--        <functionAppName>helloFunction</functionAppName>-->
+        <functionAppName>UploadFileToBlob</functionAppName>
+>>>>>>> 753de84 (uploading files)
     </properties>
 
     <dependencies>
@@ -44,9 +49,39 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.15.0</version>
         </dependency>
+<<<<<<< HEAD
     </dependencies>
 
     <build>
+=======
+
+        <!-- Azure Storage Blob SDK -->
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-storage-blob</artifactId>
+            <version>12.25.0</version>
+        </dependency>
+
+        <!-- For file handling -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.13.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>local.settings.json</include>
+                    <include>host.json</include>
+                </includes>
+                <filtering>true</filtering> <!-- Optional: enables variable substitution -->
+            </resource>
+        </resources>
+>>>>>>> 753de84 (uploading files)
         <plugins>
             <!-- Azure Functions Maven Plugin -->
             <plugin>
@@ -55,15 +90,25 @@
                 <version>1.23.0</version> <!-- Updated version -->
                 <configuration>
                     <appName>${functionAppName}</appName>
+<<<<<<< HEAD
                     <resourceGroup>myResourceGroup</resourceGroup>
                     <region>westeurope</region>
+=======
+                    <resourceGroup>module_06</resourceGroup>
+                    <region>westus2</region>
+>>>>>>> 753de84 (uploading files)
                     <runtime>
                         <os>linux</os>
                         <javaVersion>17</javaVersion>
                         <image>mcr.microsoft.com/azure-functions/java:4-java17</image>
                     </runtime>
+<<<<<<< HEAD
                     <authLevel>anonymous</authLevel>
                     <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
+=======
+<!--                    <authLevel>anonymous</authLevel>-->
+<!--                    <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>-->
+>>>>>>> 753de84 (uploading files)
                     <appSettings>
                         <property>
                             <name>FUNCTIONS_EXTENSION_VERSION</name>
@@ -81,6 +126,37 @@
                 </executions>
             </plugin>
 
+<<<<<<< HEAD
+=======
+            <!-- Add this NEW plugin configuration -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-local-settings</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/azure-functions/${functionAppName}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>local.settings.json</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                            <overwrite>true</overwrite>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+>>>>>>> 753de84 (uploading files)
             <!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
